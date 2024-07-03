@@ -1,0 +1,48 @@
+* {
+    box-sizing: border-box;
+}
+
+/* You can customize the style of the bottom sheet from your CSS file */
+
+/* Example: If you want it to respond to dark mode, you can copy variables from bottom-sheet.default-style.css and change them */
+    bottom-sheet.dark {
+        --overlay-background-color: rgba(0, 0, 0, 0.8); /* Darker overlay */
+        --header-background-color: #333; /* Dark header */
+        --indicator-background-color: #666; /* Darker indicator */
+        --bottom-sheet-background-color: #222; /* Dark background */
+        --bottom-sheet-box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5); /* Darker shadow */
+    }
+
+/* Or if you want it to be responsive */
+    @media screen and (max-width: 767px) {
+        bottom-sheet {
+            --bottom-sheet-normal-height: 50%;
+            --bottom-sheet-full-height: 90%;
+            --bottom-sheet-width: 100%;
+            --bottom-sheet-header-height: 4vh;
+            --indicator-height: 0.75vh;
+            --indicator-width: 15%;
+        }
+    }
+
+/* You can design styles for sub-elements of the bottom sheet like normal elements */
+    bottom-sheet.dark div.content-box {
+        color: white;
+    }
+
+    bottom-sheet.dark .toggle-btn {
+        background-color: black;
+        color: white;
+    }
+
+    div.content-box {
+        width: 100%;
+        padding: 10px;
+        line-height: 1.5;
+    }
+
+    .toggle-btn {
+        padding: 10px;
+        margin: 10px;
+        cursor: pointer;
+    }

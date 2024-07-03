@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="your-custom-styles.css">
+
+    <!--
+        This preload link is required to load the default css for the BottomSheet
+        It ensures that the BottomSheet's interface does not lag due to CSS loading time.
+        Make sure that the path to the "bottom-sheet.default-style.css" file is correct where you placed it.
+    --> <link rel="preload" href="./component/bottom-sheet.default-style.css" as="fetch" crossorigin="anonymous">
+    <!-- 
+        Ensure the BottomSheet script is loaded after the CSS preload; otherwise, the above preload link is useless. 
+    --> <script src="./component/BottomSheet.class.js"></script>
+
+</head>
+
+<body>
+    <!-- You can add a BottomSheet opening action to a certain button, or a certain action (swipe up, for example). -->
+    <button onclick="document.querySelector('bottom-sheet').show()">
+        Click to open bottom sheet
+    </button>
+
+    <!-- Use the bottom-sheet tag as a div tag -->
+    <bottom-sheet>
+        
+        <!-- The html content you want to put in the body of the BottomSheet, just think of it as a normal div tag. -->
+        <div class="content-box">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis nam asperiores, sed minima quam ipsa, alias repellendus culpa, animi laborum fuga impedit aut quaerat laboriosam. Aliquid beatae consectetur repellendus suscipit?
+            <br><hr><br>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum adipisci quibusdam debitis exercitationem ipsum expedita rerum deleniti, labore sint nemo id, modi cupiditate, ut omnis quidem doloremque? Vitae, minima beatae!
+            <hr>
+        </div>
+        
+        <br>
+        
+        <button 
+            class="toggle-btn" 
+            onclick="document.querySelector('bottom-sheet').classList.toggle('dark')">
+            Toggle dark mode example
+        </button>
+
+    </bottom-sheet>
+    
+    <script src="script.js"></script>
+</body>
+</html>
