@@ -76,7 +76,7 @@
             this.bottomSheet.style.bottom = '0';
             this.bottomSheet.style.height = this.#getCSSVariable('--normal-height');
             this.setAttribute('open', '');
-            history.pushState(null, null, '?open-bottom-sheet');
+            history.pushState(null, null, location.href);
         }
 
         dismiss(back = true) {
@@ -120,6 +120,7 @@
              * @param {TouchEvent} event 
              */
             function onTouchStart(event) {
+                event.preventDefault();
                 startY = event.touches[0].clientY;
                 startHeight = bottomSheet.clientHeight;
                 document.addEventListener('touchmove', onTouchMove);
@@ -171,17 +172,20 @@
                 const normalHeight = screen.height * 0.01 * parseInt(bottomSheetNormalHeightCSS);
                 const dHeight = bottomSheet.clientHeight;
         
-                if (dy < -20 && dHeight > normalHeight) {
+                if (dy < - (screen.height * .04) && dHeight > normalHeight) {
                     _this.setAttribute('full', '');
-                } else if (dy > 20) {
-                    if(dHeight > normalHeight * 1.4) {
+                } else if (dy > screen.height * .04) {
+                    if(dHeight > normalHeight * 1.6) {
                         _this.setAttribute('full', '');
                     } else {
                         _this.dismiss();
                     }
                 } else {
                     if(!Math.abs(dy) <= 5) {
-                        _this.#toggleFullState();
+                        if(Math.abs(dHeight - normalHeight * 1.5) > 0) {
+                            _this.#toggleFullState();
+                            _this.#toggleFullState();                            
+                        }
                     }
                 }
                 
