@@ -184,7 +184,7 @@
                     if(!Math.abs(dy) <= 5) {
                         if(Math.abs(dHeight - normalHeight * 1.5) > 0) {
                             _this.#toggleFullState();
-                            _this.#toggleFullState();                            
+                            _this.#toggleFullState();
                         }
                     }
                 }
@@ -211,11 +211,14 @@
         }
 
         attributeChangedCallback(name, oldValue, newValue) {
-            if (name === 'full') {
-                if (this.hasAttribute('full')) {
-                    this.#fullHeight();
-                } else {
-                    this.#normalHeight();
+            switch (name) {
+                case 'full': {
+                    if (this.hasAttribute('full')) {
+                        this.#fullHeight();
+                    } else {
+                        this.#normalHeight();
+                    }                    
+                    break;                    
                 }
             }
         }
@@ -248,4 +251,4 @@
     }
 
     customElements.define('bottom-sheet', BottomSheet);
-}()
+}();
